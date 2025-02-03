@@ -1,0 +1,84 @@
+.News {
+    text-align: center;
+}
+
+.pro-container{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    flex-wrap: wrap;
+}
+
+.pro {
+    width: 555px;
+    height: auto;
+    max-height: 550;
+    min-width: 350px;
+    padding: 10px 12px;
+    border: 1px solid #cce7d0;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
+    margin: 15px 0;
+    transition: 0.2s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.pro:hover {
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.3);
+}
+
+.pro img {
+    margin: 0;
+    width: auto; /* Make image responsive */
+    max-width: 500px; /* Optional: cap max width */
+    height: 350px; /* Maintain aspect ratio */
+    border-radius: 20px;
+}
+
+.des {
+    margin-top: 20px; /* Space between image and text */
+    text-align: start; /* Align text to start */
+    padding: 10px 0;
+    width: 100%; /* Make it span the container width */
+}
+
+.des span {
+    color: #868686;
+    font-size: 15px;
+}
+
+.des h5 {
+    padding-top: 7px;
+    color: #b37ace;
+    font-size: 18px;
+}
+
+.des h4 {
+    padding-top: 7px;
+    font-size: 19px;
+    font-weight: 700;
+    color: rgb(131, 189, 98);
+}
+
+.pro .cart {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 60px;
+    font-weight: 500;
+    color: rgb(131, 189, 98);
+    font-style: normal;
+    font-size: 24px;
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+}
+
+.pro a {
+    text-decoration: none;
+}

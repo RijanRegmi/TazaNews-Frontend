@@ -1,15 +1,14 @@
-import Card from './Card.jsx'
 import Header from './Header.jsx';
-import Food from './Food.jsx';
 import Footer from './Footer.jsx';
-
+import Hero from './Hero.jsx';
+import Newsinapp from './Newsinapp.jsx';
 function App() {
   return(
     <>
       <Header/>
-      <Food/>
+      <Hero/>
+      <Newsinapp/>
       <Footer/>
-      <Card />
     </>
   );
 }

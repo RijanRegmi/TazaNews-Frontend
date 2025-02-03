@@ -1,7 +1,6 @@
 import profilepic from './../assets/TazaNews.png';
 import './../Style/Header.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import script from './../../script.js';
 
 function Header() {
     return (
