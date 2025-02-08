@@ -5,7 +5,7 @@ import './../Style/Footer.css';
 function Footer(){
     return(
         <>
-            <section id='About'>
+            <section id='About' className='Footer'>
                 <footer className="section-p1">
                     <div className="col">
                         <img className="logo" src={profilepic}  alt="" />
