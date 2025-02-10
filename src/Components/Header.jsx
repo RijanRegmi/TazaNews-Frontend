@@ -6,6 +6,7 @@ function Header() {
     return (
         <>
             <sectio className = "header">
+                
                     <a href="#">
                     <img src={profilepic} alt=""  className="logo"/>
                     </a>

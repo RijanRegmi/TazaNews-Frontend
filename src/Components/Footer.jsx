@@ -29,7 +29,6 @@ function Footer(){
                         <a href="#">Terms & Conditions</a>
                         <a href="#">Contact Us</a>
                     </div>
-
                     <div className="col">
                         <h4>My Account</h4>
                         <a href="#">Sign In</a>
