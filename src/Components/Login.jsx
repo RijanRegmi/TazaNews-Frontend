@@ -10,8 +10,10 @@ function Login(){
                     <label for="uname"><b>Username</b></label>
                     <input type="text" placeholder="Enter Username" name="uname" required></input>
 
+
                     <label for="psw"><b>Username</b></label>
                     <input type="password" placeholder="Enter password" name="psw" required></input>
+
 
                     <button type="submit">Login</button>
                         <label>

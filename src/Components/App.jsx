@@ -6,11 +6,11 @@ import Login from './Login.jsx';
 function App() {
   return(
     <>
-      {/* <Header/>
+      <Header/>
       <Hero/>
       <Newsinapp/>
-      <Footer/> */}
-      <Login/>
+      <Footer/>
+      {/* <Login/> */}
     </>
   );
 }
