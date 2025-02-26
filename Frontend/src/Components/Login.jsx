@@ -3,8 +3,10 @@ import passwordIcon from './../assets/email.png';
 import emailIcon from './../assets/password.png';
 import userIcon from './../assets/person.png';
 import './../Style/LoginSignup.css';
+import { useNavigate } from "react-router-dom";
 const Login = () => {
 
+    const navigate = useNavigate();
     const [action, setAction] = useState("Login");
 
     return(
@@ -29,8 +31,8 @@ const Login = () => {
                     </div>
                     <div className="forgot-password">Lost Password? <span>Click Here!</span></div>
                     <div className="submit-container">
-                    <div className="submit">Sign Up</div>
-                    <div className='submit gray'>Login</div>
+                    <div className="submit gray"  onClick={() => navigate("/SignUp")}>Sign Up</div>
+                    <div className='submit' onClick={() => navigate("/MainApp")}>Login</div>
                     </div>
                 </div>
             </section>

@@ -15,8 +15,8 @@ function Header() {
                         <ul className="navbar" id="navbar">
                             <li><a href="#" className="active">Home</a></li>
                             <li><a href="#News" >News</a></li>
-                            <li><a href="#" >Category</a></li>
                             <li><a href="#About" >About</a></li>
+                            <li><a href="#" >Profile</a></li>
                         </ul>
                     </nav>
                 </div>

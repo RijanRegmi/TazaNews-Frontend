@@ -1,149 +1,42 @@
-function News(){
-    return(
-        <>
-            <section ClassName="News" id='News' className="section-p1">
-                            <h2>Latest News</h2>
-                            <div className="pro-container">
-                                <div className="pro">
-                                    <img src={mnr} alt=""/>
-                                    <div className="des">
-                                        <span>Football</span>
-                                        <h5>Messi, Neymar and Ronaldo</h5>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore consectetur minima quis quam repellat voluptas! Amet in alias, expedita error nulla, reiciendis magni beatae sint impedit vel, ipsam labore.</p>
-                                    </div>
-                                </div>
-                                <div className="pro">
-                                    <img src={msn} alt=""/>
-                                    <div className="des">
-                                        <span>News Catagory</span>
-                                        <h5>News Title</h5>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore consectetur minima quis quam repellat voluptas! Amet in alias, expedita error nulla, reiciendis magni beatae sint impedit vel, ipsam labore.</p>
-                                    </div>
-                                </div>
-                                <div className="pro">
-                                    <div className="des">
-                                        <span>News Catagory</span>
-                                        <h5>News Title</h5>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore consectetur minima quis quam repellat voluptas! Amet in alias, expedita error nulla, reiciendis magni beatae sint impedit vel, ipsam labore.</p>
-                                    </div>
-                                </div>
-                                <div className="pro">
-                                    <div className="des">
-                                        <span>News Catagory</span>
-                                        <h5>News Title</h5>
-                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit esse natus voluptatibus accusamus harum maiores, impedit corporis odit voluptatum corrupti. Distinctio laborum cum animi, architecto adipisci molestiae debitis excepturi nobis.</p>
-                                    </div>
-                                </div>
-                                <div className="pro">
-                                    <div className="des">
-                                        <span>News Catagory</span>
-                                        <h5>News Title</h5>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore consectetur minima quis quam repellat voluptas! Amet in alias, expedita error nulla, reiciendis magni beatae sint impedit vel, ipsam labore.</p>
-                                    </div>
-                                </div>
-                                <div className="pro">
-                                    <div className="des">
-                                        <span>News Catagory</span>
-                                        <h5>News Title</h5>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore consectetur minima quis quam repellat voluptas! Amet in alias, expedita error nulla, reiciendis magni beatae sint impedit vel, ipsam labore.</p>
-                                    </div>
-                                </div>
-                                <div className="pro">
-                                    <div className="des">
-                                        <span>News Catagory</span>
-                                        <h5>News Title</h5>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore consectetur minima quis quam repellat voluptas! Amet in alias, expedita error nulla, reiciendis magni beatae sint impedit vel, ipsam labore.</p>
-                                    </div>
-                                </div><div className="pro">
-                                    <div className="des">
-                                        <span>News Catagory</span>
-                                        <h5>News Title</h5>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore consectetur minima quis quam repellat voluptas! Amet in alias, expedita error nulla, reiciendis magni beatae sint impedit vel, ipsam labore.</p>
-                                    </div>
-                                </div>
-                                <div className="pro">
-                                    <div className="des">
-                                        <span>News Catagory</span>
-                                        <h5>News Title</h5>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore consectetur minima quis quam repellat voluptas! Amet in alias, expedita error nulla, reiciendis magni beatae sint impedit vel, ipsam labore.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-            
-            
-            
-                        <section ClassName="News" className="section-p1">
-                            <h2>Sport News</h2>
-                            <div className="pro-container">
-                                <div className="pro">
-                                    <img src={mnr} alt=""/>
-                                    <div className="des">
-                                        <span>Football</span>
-                                        <h5>Messi, Neymar and Ronaldo</h5>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore consectetur minima quis quam repellat voluptas! Amet in alias, expedita error nulla, reiciendis magni beatae sint impedit vel, ipsam labore.</p>
-                                    </div>
-                                </div>
-                                <div className="pro">
-                                    <img src={msn} alt=""/>
-                                    <div className="des">
-                                        <span>News Catagory</span>
-                                        <h5>News Title</h5>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore consectetur minima quis quam repellat voluptas! Amet in alias, expedita error nulla, reiciendis magni beatae sint impedit vel, ipsam labore.</p>
-                                    </div>
-                                </div>
-                                <div className="pro">
-                                    <div className="des">
-                                        <span>News Catagory</span>
-                                        <h5>News Title</h5>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore consectetur minima quis quam repellat voluptas! Amet in alias, expedita error nulla, reiciendis magni beatae sint impedit vel, ipsam labore.</p>
-                                    </div>
-                                </div>
-                                <div className="pro">
-                                    <div className="des">
-                                        <span>News Catagory</span>
-                                        <h5>News Title</h5>
-                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit esse natus voluptatibus accusamus harum maiores, impedit corporis odit voluptatum corrupti. Distinctio laborum cum animi, architecto adipisci molestiae debitis excepturi nobis.</p>
-                                    </div>
-                                </div>
-                                <div className="pro">
-                                    <div className="des">
-                                        <span>News Catagory</span>
-                                        <h5>News Title</h5>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore consectetur minima quis quam repellat voluptas! Amet in alias, expedita error nulla, reiciendis magni beatae sint impedit vel, ipsam labore.</p>
-                                    </div>
-                                </div>
-                                <div className="pro">
-                                    <div className="des">
-                                        <span>News Catagory</span>
-                                        <h5>News Title</h5>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore consectetur minima quis quam repellat voluptas! Amet in alias, expedita error nulla, reiciendis magni beatae sint impedit vel, ipsam labore.</p>
-                                    </div>
-                                </div>
-                                <div className="pro">
-                                    <div className="des">
-                                        <span>News Catagory</span>
-                                        <h5>News Title</h5>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore consectetur minima quis quam repellat voluptas! Amet in alias, expedita error nulla, reiciendis magni beatae sint impedit vel, ipsam labore.</p>
-                                    </div>
-                                </div><div className="pro">
-                                    <div className="des">
-                                        <span>News Catagory</span>
-                                        <h5>News Title</h5>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore consectetur minima quis quam repellat voluptas! Amet in alias, expedita error nulla, reiciendis magni beatae sint impedit vel, ipsam labore.</p>
-                                    </div>
-                                </div>
-                                <div className="pro">
-                                    <div className="des">
-                                        <span>News Catagory</span>
-                                        <h5>News Title</h5>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore consectetur minima quis quam repellat voluptas! Amet in alias, expedita error nulla, reiciendis magni beatae sint impedit vel, ipsam labore.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-        </>
-    );
+import { useState } from "react";
+import "./../Style/News.css";
+import mnr from "./../assets/mnr.jpg";
+
+function News() {
+  const fullText =
+    "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid consectetur labore quasi! Aspernatur minima modi dignissimos, eligendi facere animi asperiores totam atque ea at obcaecati voluptates. Alias voluptates ducimus fuga?";
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <>
+      <section className="page-header">
+        <div className="blog-header">
+          <h2>#ReadMore</h2>
+          <p>Read all case studies about our product</p>
+        </div>
+      </section>
+
+      <section className="blog">
+        <div className="blog-box">
+          <div className="blog-img">
+            <img src={mnr} alt="Messi Neymar Ronaldo" />
+          </div>
+          <div className="blog-details">
+            <h4 className="blog-title">Messi Neymar and Ronaldo</h4>
+            <p className={`blog-text ${isExpanded ? "expanded" : "collapsed"}`}>
+              {isExpanded ? fullText : `${fullText.substring(0, 100)}...`}
+            </p>
+            <button
+              className="read-more-btn"
+              onClick={() => setIsExpanded(!isExpanded)}
+            >
+              {isExpanded ? "SHOW LESS" : "CONTINUE READING"}
+            </button>
+          </div>
+        </div>
+      </section>
+    </>
+  );
 }
 
-export default News
+export default News;
