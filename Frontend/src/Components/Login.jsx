@@ -32,7 +32,7 @@ const Login = () => {
                     <div className="forgot-password">Lost Password? <span>Click Here!</span></div>
                     <div className="submit-container">
                     <div className="submit gray"  onClick={() => navigate("/SignUp")}>Sign Up</div>
-                    <div className='submit' onClick={() => navigate("/MainApp")}>Login</div>
+                    <div className='submit' onClick={() => navigate("/Home")}>Login</div>
                     </div>
                 </div>
             </section>

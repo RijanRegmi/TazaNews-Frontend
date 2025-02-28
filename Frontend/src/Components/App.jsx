@@ -6,16 +6,22 @@ import Newsinapp from './Newsinapp.jsx';
 import SignUp from './Signup.jsx';
 import Login from './Login.jsx';
 import MainApp from './MainApp.jsx';
+import News from './News.jsx';
+import About from './About.jsx';
+import Profile from './Profile.jsx';
+
 function App() {
   return(
     <>
-      
-
       <Router>
         <Routes>
           <Route path="/Signup" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/MainApp" element={<MainApp />}/> 
+          <Route path="/" element={<Login/>} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Home" element={<MainApp/>}/> 
+          <Route path="/News" element={<News/>}/> 
+          <Route path="/About" element={<About/>}/> 
+          <Route path="/Profile" element={<Profile/>}/> 
         </Routes>
       </Router>
     </>

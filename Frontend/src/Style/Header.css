@@ -49,7 +49,7 @@
 
 .navbar li a:hover,
 .navbar li a.active {
-  color: rgb(131, 189, 98);
+  color: #9d6cd1;
 }
 
 .navbar li a.active::after,
@@ -57,7 +57,7 @@
   content: "";
   width: 30%;
   height: 2px;
-  background: rgb(131, 189, 98);
+  background: #9d6cd1;
   position: absolute;
   bottom:-4px;
   left: 20px;

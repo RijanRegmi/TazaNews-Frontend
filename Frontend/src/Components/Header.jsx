@@ -1,29 +1,34 @@
+import { useLocation, useNavigate } from 'react-router-dom';
 import profilepic from './../assets/TazaNews.png';
 import './../Style/Header.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 function Header() {
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const isActive = (path) => location.pathname === path;
+
     return (
         <>
-            <sectio className = "header">
-                
-                    <a href="#">
-                    <img src={profilepic} alt=""  className="logo"/>
-                    </a>
+            <section className="header">
+                <a href="#" onClick={() => navigate("/Home")}>
+                    <img src={profilepic} alt="Taza News Logo" className="logo" />
+                </a>
                 <div>
                     <nav>
                         <ul className="navbar" id="navbar">
-                            <li><a href="#" className="active">Home</a></li>
-                            <li><a href="#News" >News</a></li>
-                            <li><a href="#About" >About</a></li>
-                            <li><a href="#" >Profile</a></li>
+                            <li><a href="" className={isActive("/Home") ? "active" : ""} onClick={() => navigate("/Home")}>Home</a></li>
+                            <li><a href="" className={isActive("/News") ? "active" : ""} onClick={() => navigate("/News")}>News</a></li>
+                            <li><a href="" className={isActive("/About") ? "active" : ""} onClick={() => navigate("/About")}>About</a></li>
+                            <li><a href="#" className={isActive("/Profile") ? "active" : ""} onClick={() => navigate("/Profile")}>Profile</a></li>
                         </ul>
                     </nav>
                 </div>
                 <div className="mobile">
-                    <i class="bi bi-x-lg"></i>
+                    <i className="bi bi-x-lg"></i>
                 </div>
-            </sectio>
+            </section>
         </>
     );
 }
