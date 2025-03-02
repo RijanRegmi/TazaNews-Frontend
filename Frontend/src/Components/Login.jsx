@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import emailIcon from './../assets/email.png';
 import passwordIcon from './../assets/password.png';
@@ -8,9 +8,11 @@ const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
 
     const handleLogin = async (event) => {
         event.preventDefault();
+        setErrorMessage("");
     
         try {
             const response = await fetch("http://localhost:5000/api/login", {
@@ -27,19 +29,35 @@ const Login = () => {
             const data = await response.json();
             console.log("Login successful!", data);
     
-            // Store authentication token (optional)
+            // Save the token in localStorage
             localStorage.setItem("token", data.token);
     
-            // Redirect to App.jsx
-            navigate("/Home");  
+            // Save the userId in localStorage
+            localStorage.setItem("userId", data.userId);
+    
+            // Navigate to the home page
+            navigate("/Home");
+    
         } catch (error) {
+            setErrorMessage(error.message);
             console.error("Login error:", error.message);
+    
+            setTimeout(() => {
+                setErrorMessage("");
+            }, 3000);
         }
     };
     
-
     return (
         <section>
+            {errorMessage && (
+                <div className="error-popup">
+                    <span className="error-icon">❌</span>
+                    <span>{errorMessage}</span>
+                    <button className="close-btn" onClick={() => setErrorMessage("")}>✖</button>
+                </div>
+            )}
+
             <h1 className='welcome'>Welcome to TazaNews</h1>
             <div className="container">
                 <div className="logHeader">
@@ -49,13 +67,24 @@ const Login = () => {
                 <div className="inputs">
                     <div className="input">
                         <img src={emailIcon} alt="" />
-                        <input type="email" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <input 
+                            type="email" 
+                            placeholder='Email' 
+                            value={email} 
+                            onChange={(e) => setEmail(e.target.value)} 
+                        />
                     </div>
                     <div className="input">
                         <img src={passwordIcon} alt="" />
-                        <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <input 
+                            type="password" 
+                            placeholder='Password' 
+                            value={password} 
+                            onChange={(e) => setPassword(e.target.value)} 
+                        />
                     </div>
                 </div>
+
                 <div className="submit-container">
                     <div className="submit gray" onClick={() => navigate("/signup")}>Sign Up</div>
                     <div className='submit' onClick={handleLogin}>Login</div>

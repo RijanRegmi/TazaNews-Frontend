@@ -9,6 +9,7 @@ import MainApp from './MainApp.jsx';
 import News from './News.jsx';
 import About from './About.jsx';
 import Profile from './Profile.jsx';
+import AdminNews from './AdminNews.jsx';
 
 function App() {
   return(
@@ -22,6 +23,7 @@ function App() {
           <Route path="/News" element={<News/>}/> 
           <Route path="/About" element={<About/>}/> 
           <Route path="/Profile" element={<Profile/>}/> 
+          <Route path="/AdminNews" element={<AdminNews/>}/> 
         </Routes>
       </Router>
     </>
