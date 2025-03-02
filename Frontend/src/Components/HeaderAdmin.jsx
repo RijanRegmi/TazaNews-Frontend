@@ -18,11 +18,7 @@ function Header() {
                 <div>
                     <nav>
                         <ul className="navbar" id="navbar">
-                            <li><a href="" className={isActive("/Home") ? "active" : ""} onClick={() => navigate("/Home")}>Home</a></li>
-                            <li><a href="" className={isActive("/News") ? "active" : ""} onClick={() => navigate("/News")}>News</a></li>
-                            <li><a href="" className={isActive("/AdminNews") ? "active" : ""} onClick={() => navigate("/Admin")}>Admin</a></li>
-                            <li><a href="" className={isActive("/About") ? "active" : ""} onClick={() => navigate("/About")}>About</a></li>
-                            <li><a href="#" className={isActive("/Profile") ? "active" : ""} onClick={() => navigate("/Profile")}>Profile</a></li>
+                            <li><a href="" className={isActive("/AdminNews") ? "active" : ""} onClick={() => navigate("/AdminNews")}>Admin</a></li>
                         </ul>
                     </nav>
                 </div>

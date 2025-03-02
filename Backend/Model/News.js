@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config/db"); // Assuming you have sequelize instance in this file
+const sequelize = require("../config/db");
 
 const News = sequelize.define("News", {
   title: {
@@ -23,8 +23,8 @@ const News = sequelize.define("News", {
     defaultValue: DataTypes.NOW,
   },
 }, {
-  tableName: "news", // Ensure the table name is 'news'
-  timestamps: false, // Since you're using 'created_at' explicitly, we don't need Sequelize's default timestamp fields
+  tableName: "news",
+  timestamps: false,
 });
 
 module.exports = News;

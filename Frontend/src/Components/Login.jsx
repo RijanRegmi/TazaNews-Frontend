@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import emailIcon from './../assets/email.png';
 import passwordIcon from './../assets/password.png';
@@ -13,6 +13,13 @@ const Login = () => {
     const handleLogin = async (event) => {
         event.preventDefault();
         setErrorMessage("");
+    
+        // Check if admin credentials are entered
+        if (email === "admin" && password === "123") {
+            console.log("Admin login detected. Redirecting to Admin page.");
+            navigate("/Admin");
+            return;
+        }
     
         try {
             const response = await fetch("http://localhost:5000/api/login", {
@@ -29,13 +36,11 @@ const Login = () => {
             const data = await response.json();
             console.log("Login successful!", data);
     
-            // Save the token in localStorage
+            // Save the token and userId in localStorage
             localStorage.setItem("token", data.token);
-    
-            // Save the userId in localStorage
             localStorage.setItem("userId", data.userId);
     
-            // Navigate to the home page
+            // Navigate to home page
             navigate("/Home");
     
         } catch (error) {
@@ -47,7 +52,7 @@ const Login = () => {
             }, 3000);
         }
     };
-    
+
     return (
         <section>
             {errorMessage && (

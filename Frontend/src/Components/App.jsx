@@ -10,6 +10,7 @@ import News from './News.jsx';
 import About from './About.jsx';
 import Profile from './Profile.jsx';
 import AdminNews from './AdminNews.jsx';
+import Admin from './Admin.jsx';
 
 function App() {
   return(
@@ -24,6 +25,7 @@ function App() {
           <Route path="/About" element={<About/>}/> 
           <Route path="/Profile" element={<Profile/>}/> 
           <Route path="/AdminNews" element={<AdminNews/>}/> 
+          <Route path="/Admin" element={<Admin/>}/> 
         </Routes>
       </Router>
     </>

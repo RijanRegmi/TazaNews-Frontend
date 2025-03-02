@@ -8,20 +8,20 @@ if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
 }
 
+// Configure storage for uploaded files
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, uploadDir);
+    cb(null, uploadDir); // Save files in the 'uploads' folder
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + path.extname(file.originalname)); // Add timestamp to file name
   },
 });
 
-// No size limit and allow any file type
+// Initialize Multer
 const upload = multer({
   storage,
-  // File size limit removed
-  limits: { fileSize: Infinity }, // Alternatively, you can omit this line entirely
+  limits: { fileSize: Infinity }, // No file size limit
   fileFilter: (req, file, cb) => {
     cb(null, true); // Accept all file types
   },

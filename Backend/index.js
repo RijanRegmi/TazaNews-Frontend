@@ -26,7 +26,7 @@ app.use("/uploads", express.static("uploads")); // Make files in 'uploads' acces
 
   app.use(express.json());
 
-  const allowedOrigins = ['http://localhost:5173']; // Add your frontend URL here
+  const allowedOrigins = ['http://localhost:5174']; // Add your frontend URL here
 const options = {
   origin: allowedOrigins,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],

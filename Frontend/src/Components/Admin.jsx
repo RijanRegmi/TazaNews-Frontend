@@ -7,7 +7,7 @@ import HeaderAdmin from './HeaderAdmin.jsx';
 function MainApp() {
   return (
     <>
-      <HeaderAdmin />
+      <HeaderAdmin/>
       <Hero/>
       <Newsinapp/>
       <Footer />
