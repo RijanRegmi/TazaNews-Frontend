@@ -66,3 +66,36 @@ footer .col img{
       text-align: center;
   } 
   
+  @media screen and (max-width: 768px) {
+    footer {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    footer .col {
+      flex: 1 1 100%; /* Full width for each column */
+      margin: 10px 0;
+      align-items: center; /* Center content for small screens */
+    }
+  
+    footer .col img {
+      width: 30%; /* Adjust image size for smaller screens */
+    }
+  
+    footer .follow {
+      text-align: center; /* Center align the social media icons */
+    }
+  
+    footer .follow i {
+      font-size: 20px; /* Slightly larger icons for better visibility */
+    }
+  
+    footer .row img {
+      width: 80%; /* Make images larger on small screens */
+      margin-bottom: 10px;
+    }
+  
+    footer .copyright {
+      font-size: 12px; /* Slightly smaller font for compact layout */
+    }
+  }

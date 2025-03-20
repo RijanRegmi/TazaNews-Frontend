@@ -1,13 +1,12 @@
-const News = require("../Model/News"); // Import the News model
-const fs = require("fs"); // For handling file deletion
-const path = require("path"); // For handling file paths
-const Like = require("../Model/Like"); // Import the Like model
+const News = require("../Model/News");
+const fs = require("fs");
+const path = require("path");
+const Like = require("../Model/Like");
 
-// ✅ Get All News
 const getAllNews = async (req, res) => {
   try {
     const news = await News.findAll({
-      order: [["created_at", "DESC"]], // Order by created_at in descending order
+      order: [["created_at", "DESC"]],
     });
     res.json(news);
   } catch (error) {
@@ -16,11 +15,10 @@ const getAllNews = async (req, res) => {
   }
 };
 
-// ✅ Add News
 const addNews = async (req, res) => {
   try {
     const { title, text } = req.body;
-    const image = req.file; // Multer handles file upload
+    const image = req.file;
 
     if (!title || !text || !image) {
       return res.status(400).json({ message: "Title, text, and image are required" });
@@ -28,7 +26,6 @@ const addNews = async (req, res) => {
 
     const imagePath = `${req.protocol}://${req.get("host")}/uploads/${image.filename}`;
 
-    // Create new news article using Sequelize
     const newNews = await News.create({
       title,
       text,
@@ -42,14 +39,12 @@ const addNews = async (req, res) => {
   }
 };
 
-// ✅ Edit News
 const editNews = async (req, res) => {
   try {
     const { id } = req.params;
     const { title, text } = req.body;
-    const image = req.file; // Multer handles file upload
+    const image = req.file;
 
-    // Find the news article by id
     const news = await News.findOne({
       where: { id },
     });
@@ -58,25 +53,22 @@ const editNews = async (req, res) => {
       return res.status(404).json({ message: "News not found" });
     }
 
-    // Update the news article
     news.title = title || news.title;
     news.text = text || news.text;
 
     if (image) {
-      // Delete the old image file (if it exists)
       if (news.image) {
         const oldImagePath = path.join(__dirname, "..", "uploads", path.basename(news.image));
         if (fs.existsSync(oldImagePath)) {
-          fs.unlinkSync(oldImagePath); // Delete the old image file
+          fs.unlinkSync(oldImagePath);
         }
       }
 
-      // Update the image path
       const imagePath = `${req.protocol}://${req.get("host")}/uploads/${image.filename}`;
       news.image = imagePath;
     }
 
-    await news.save(); // Save the updated news article
+    await news.save();
 
     res.json(news);
   } catch (error) {
@@ -85,12 +77,10 @@ const editNews = async (req, res) => {
   }
 };
 
-// ✅ Delete News
 const deleteNews = async (req, res) => {
   try {
     const { id } = req.params;
 
-    // Find the news article by id
     const news = await News.findOne({
       where: { id },
     });
@@ -99,15 +89,13 @@ const deleteNews = async (req, res) => {
       return res.status(404).json({ message: "News not found" });
     }
 
-    // Delete the associated image file (if it exists)
     if (news.image) {
       const imagePath = path.join(__dirname, "..", "uploads", path.basename(news.image));
       if (fs.existsSync(imagePath)) {
-        fs.unlinkSync(imagePath); // Delete the image file
+        fs.unlinkSync(imagePath);
       }
     }
 
-    // Delete the news article from the database
     await news.destroy();
 
     res.json({ message: "News deleted successfully" });
@@ -117,25 +105,21 @@ const deleteNews = async (req, res) => {
   }
 };
 
-// ✅ Like a News Article
 const likeNews = async (req, res) => {
   try {
     const { id } = req.params;
-    const userId = req.user.id; // Assuming you have user authentication
+    const userId = req.user.id;
 
-    // Check if the user has already liked/disliked the news
     const existingLike = await Like.findOne({
       where: { userId, newsId: id },
     });
 
     if (existingLike) {
-      // If the user already liked, unlike the article
       if (existingLike.liked) {
         await existingLike.destroy();
         await News.decrement("likes", { where: { id } });
         return res.json({ message: "Like removed", likes: await getLikesCount(id) });
       } else {
-        // If the user disliked, change it to a like
         existingLike.liked = true;
         await existingLike.save();
         await News.increment("likes", { where: { id } });
@@ -143,7 +127,6 @@ const likeNews = async (req, res) => {
       }
     }
 
-    // If the user hasn't liked/disliked before, add a like
     await Like.create({ userId, newsId: id, liked: true });
     await News.increment("likes", { where: { id } });
 
@@ -154,25 +137,21 @@ const likeNews = async (req, res) => {
   }
 };
 
-// ✅ Dislike a News Article
 const dislikeNews = async (req, res) => {
   try {
     const { id } = req.params;
-    const userId = req.user.id; // Assuming you have user authentication
+    const userId = req.user.id;
 
-    // Check if the user has already liked/disliked the news
     const existingLike = await Like.findOne({
       where: { userId, newsId: id },
     });
 
     if (existingLike) {
-      // If the user already disliked, remove the dislike
       if (!existingLike.liked) {
         await existingLike.destroy();
         await News.increment("likes", { where: { id } });
         return res.json({ message: "Dislike removed", likes: await getLikesCount(id) });
       } else {
-        // If the user liked, change it to a dislike
         existingLike.liked = false;
         await existingLike.save();
         await News.decrement("likes", { where: { id } });
@@ -180,7 +159,6 @@ const dislikeNews = async (req, res) => {
       }
     }
 
-    // If the user hasn't liked/disliked before, add a dislike
     await Like.create({ userId, newsId: id, liked: false });
     await News.decrement("likes", { where: { id } });
 
@@ -191,7 +169,6 @@ const dislikeNews = async (req, res) => {
   }
 };
 
-// Helper function to get the current like count
 const getLikesCount = async (newsId) => {
   const news = await News.findOne({ where: { id: newsId } });
   return news.likes;

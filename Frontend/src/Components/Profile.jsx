@@ -12,16 +12,16 @@ function Profile() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [selectedFile, setSelectedFile] = useState(null); // Track the selected file
+  const [selectedFile, setSelectedFile] = useState(null);
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem("token");
-        const userId = localStorage.getItem("userId"); // Get the userId from localStorage
+        const userId = localStorage.getItem("userId");
 
         if (!token || !userId) {
-          navigate("/login"); // Redirect if no token or userId
+          navigate("/login");
           return;
         }
 
@@ -50,10 +50,10 @@ function Profile() {
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
-      setSelectedFile(file); // Store the selected file
+      setSelectedFile(file);
       const reader = new FileReader();
       reader.onloadend = () => {
-        setImage(reader.result); // Display image preview
+        setImage(reader.result);
       };
       reader.readAsDataURL(file);
     }
@@ -61,7 +61,7 @@ function Profile() {
 
   const handleSubmit = async () => {
     const token = localStorage.getItem("token");
-    const userId = localStorage.getItem("userId"); // Get userId from localStorage
+    const userId = localStorage.getItem("userId");
 
     if (!token || !userId) {
       alert("You must be logged in to update your profile.");
@@ -73,18 +73,17 @@ function Profile() {
     formData.append("email", email);
     formData.append("phone", phone);
 
-    // Append selected file (image) if it exists
     if (selectedFile) {
-      formData.append("image", selectedFile); // Append the file itself, not base64
+      formData.append("image", selectedFile);
     }
 
     try {
       const response = await fetch(`http://localhost:5000/profile/update/${userId}`, {
         method: "PUT",
         headers: {
-          Authorization: `Bearer ${token}`, // Token is passed in header
+          Authorization: `Bearer ${token}`,
         },
-        body: formData, // Send FormData with file
+        body: formData,
       });
 
       const data = await response.json();
@@ -112,7 +111,7 @@ function Profile() {
             type="file"
             accept="image/*"
             onChange={handleImageUpload}
-            style={{ display: "none" }} // Hide default file input
+            style={{ display: "none" }}
           />
         </div>
 

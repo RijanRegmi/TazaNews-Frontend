@@ -6,6 +6,7 @@ import './../Style/About.css';
 import TazaNews from './../assets/TazaNews.png';
 import Footer from './Footer.jsx';
 import Header from './Header.jsx';
+
 function About() {
   const navigate = useNavigate();
   const [action, setAction] = useState("News");
@@ -17,7 +18,7 @@ function About() {
         <section className = "page-header">
             <div className="about-header">
                 <h2>#KnowUs</h2>
-                <p>Lorem ipsum dolor sit amet, consecteur</p>
+                <p>Learn more about us.</p>
             </div>
         </section>
 

@@ -12,13 +12,14 @@ function Header() {
     return (
         <>
             <section className="header">
-                <a href="#" onClick={() => navigate("/Home")}>
-                    <img src={profilepic} alt="Taza News Logo" className="logo" />
+                <a href="#">
+                    <img src={profilepic} alt="Taza News Logo" className="logo"/>
                 </a>
                 <div>
                     <nav>
                         <ul className="navbar" id="navbar">
                             <li><a href="" className={isActive("/AdminNews") ? "active" : ""} onClick={() => navigate("/AdminNews")}>Admin</a></li>
+                            <li><a href="#" className={isActive("/Login") ? "active" : ""} onClick={() => navigate("/Login")}>Log Out</a></li>
                         </ul>
                     </nav>
                 </div>

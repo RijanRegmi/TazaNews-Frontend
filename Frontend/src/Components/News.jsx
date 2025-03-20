@@ -59,6 +59,12 @@ const News = () => {
       <Header />
       <section className="news-section">
         <div className="news-container">
+        <section className = "page-header">
+            <div className="about-header">
+                <h2>#News</h2>
+                <p>See the latest and fastest news.</p>
+            </div>
+        </section>
           {news.map((article) => {
             const isExpanded = expandedArticles[article.id]; // Check if the article is expanded
             const displayText = isExpanded

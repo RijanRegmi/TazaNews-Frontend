@@ -1,6 +1,6 @@
 const express = require("express");
-const upload = require("../middleware/uploadMiddleware"); // Import multer middleware
-const { updateUser,getUserProfile } = require("../controller/userController"); // Correct path based on your structure
+const upload = require("../middleware/uploadMiddleware");
+const { updateUser,getUserProfile } = require("../controller/userController");
 
 const router = express.Router();
 

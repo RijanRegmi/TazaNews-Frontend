@@ -9,27 +9,24 @@ const AdminNews = () => {
   const [text, setText] = useState("");
   const [image, setImage] = useState(null);
   const [message, setMessage] = useState("");
-  const [newsList, setNewsList] = useState([]); // State to store news articles
-  const [editingNews, setEditingNews] = useState(null); // Track the news being edited
-  const [expandedNews, setExpandedNews] = useState({}); // Track expanded news articles
+  const [newsList, setNewsList] = useState([]);
+  const [editingNews, setEditingNews] = useState(null);
+  const [expandedNews, setExpandedNews] = useState({});
 
-  // Fetch all news articles on component mount
   useEffect(() => {
     fetchNews();
   }, []);
 
-  // Fetch news articles from the backend
   const fetchNews = async () => {
     try {
       const response = await axios.get("http://localhost:5000/news/get-all-news");
-      setNewsList(response.data); // Update the news list
+      setNewsList(response.data);
     } catch (error) {
       console.error("Error fetching news:", error);
       setMessage("Failed to fetch news articles.");
     }
   };
 
-  // Handle form submission (add or edit news)
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -39,7 +36,6 @@ const AdminNews = () => {
 
     try {
       if (editingNews) {
-        // If editing, send a PUT request
         const response = await axios.put(
           `http://localhost:5000/news/edit-news/${editingNews.id}`,
           formData,
@@ -47,7 +43,6 @@ const AdminNews = () => {
         );
         setMessage(response.data.message);
       } else {
-        // If creating, send a POST request
         const response = await axios.post(
           "http://localhost:5000/news/add-news",
           formData,
@@ -55,43 +50,43 @@ const AdminNews = () => {
         );
         setMessage(response.data.message);
       }
-      // Reset form and fetch updated news list
       setTitle("");
       setText("");
       setImage(null);
       setEditingNews(null);
-      fetchNews(); // Refresh the news list
+      fetchNews();
     } catch (error) {
       console.error("Error:", error);
       setMessage("Failed to perform the operation.");
     }
   };
 
-  // Handle edit button click
   const handleEdit = (news) => {
     setTitle(news.title);
     setText(news.text);
-    setImage(null); // Reset image input (or pre-fill if you have an image URL)
+    setImage(null); 
     setEditingNews(news);
   };
 
-  // Handle delete button click
   const handleDelete = async (id) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this news article?");
+    if (!confirmDelete) return;
+  
     try {
       const response = await axios.delete(`http://localhost:5000/news/delete-news/${id}`);
       setMessage(response.data.message);
-      fetchNews(); // Refresh the news list
+      fetchNews(); 
     } catch (error) {
       console.error("Error deleting news:", error);
       setMessage("Failed to delete news.");
     }
   };
+  
 
-  // Handle "Read More" button click
   const handleReadMore = (id) => {
     setExpandedNews((prev) => ({
       ...prev,
-      [id]: !prev[id], // Toggle expanded state
+      [id]: !prev[id], 
     }));
   };
 
@@ -99,23 +94,53 @@ const AdminNews = () => {
     <>
       <HeaderAdmin />
       <div className="admin-container">
+      <div className="AddNews-container">
+      <h2>{editingNews ? "Edit News Article" : "Add News Article"}</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+          <textarea
+            placeholder="News Article"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            required
+          ></textarea>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => setImage(e.target.files[0])}
+            required={!editingNews} 
+          />
+          <button type="submit">{editingNews ? "Update News" : "Add News"}</button>
+          {editingNews && (
+            <button type="button" onClick={() => setEditingNews(null)}>
+              Cancel Edit
+            </button>
+          )}
+          </form>
+          </div>
+
         <h2>News Articles</h2>
         {message && <p className="message">{message}</p>}
 
-        {/* Display existing news articles */}
         <div className="news-list">
           {newsList.map((news) => {
-            const isExpanded = expandedNews[news.id]; // Check if the news is expanded
+            const isExpanded = expandedNews[news.id]; 
             const displayText = isExpanded
-              ? news.text // Show full text if expanded
-              : news.text.slice(0, 150) + "..."; // Show limited text if not expanded
+              ? news.text 
+              : news.text.slice(0, 150) + "..."; 
 
             return (
               <div key={news.id} className="news-item">
                 <h3>{news.title}</h3>
                 <p className="news-text">
                   {displayText}
-                  {news.text.length > 150 && ( // Show "Read More" button if text is long
+                  {news.text.length > 150 && ( 
                     <button
                       className="read-more-btn"
                       onClick={() => handleReadMore(news.id)}
@@ -139,36 +164,6 @@ const AdminNews = () => {
             );
           })}
         </div>
-
-        {/* Add/Edit News Form */}
-        <h2>{editingNews ? "Edit News Article" : "Add News Article"}</h2>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-          <textarea
-            placeholder="News Text"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            required
-          ></textarea>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(e) => setImage(e.target.files[0])}
-            required={!editingNews} // Only required when creating new news
-          />
-          <button type="submit">{editingNews ? "Update News" : "Add News"}</button>
-          {editingNews && (
-            <button type="button" onClick={() => setEditingNews(null)}>
-              Cancel Edit
-            </button>
-          )}
-        </form>
       </div>
       <Footer />
     </>

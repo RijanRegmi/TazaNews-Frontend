@@ -6,8 +6,21 @@ import 'bootstrap/dist/css/bootstrap.css';
 function Header() {
     const navigate = useNavigate();
     const location = useLocation();
-
+    const bar = document.getElementById('bar');
+    const close = document.getElementById('close');
+    const nav = document.getElementById('navbar');
+    
     const isActive = (path) => location.pathname === path;
+    if (bar){
+        bar.addEventListener('click', () => {
+        nav.classList.add('active');
+        })
+    }
+    if (close){
+        close.addEventListener('click', () => {
+        nav.classList.remove('active');
+        })
+    }
 
     return (
         <>
@@ -22,11 +35,13 @@ function Header() {
                             <li><a href="" className={isActive("/News") ? "active" : ""} onClick={() => navigate("/News")}>News</a></li>
                             <li><a href="" className={isActive("/About") ? "active" : ""} onClick={() => navigate("/About")}>About</a></li>
                             <li><a href="#" className={isActive("/Profile") ? "active" : ""} onClick={() => navigate("/Profile")}>Profile</a></li>
+                            <li><a href="#" className={isActive("/Login") ? "active" : ""} onClick={() => navigate("/Login")}>Log Out</a></li>
+                            <a href="#" className="close">❌</a>
                         </ul>
                     </nav>
                 </div>
                 <div className="mobile">
-                    <i className="bi bi-x-lg"></i>
+                <i className="bar" A></i>
                 </div>
             </section>
         </>

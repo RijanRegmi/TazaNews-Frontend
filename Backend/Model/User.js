@@ -1,12 +1,13 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/db");
 
+
 const User = sequelize.define("User", {
   userId: {
     type: DataTypes.INTEGER,
-    primaryKey: true, // Set as primary key
-    autoIncrement: true, // Auto-increment the userId
-    allowNull: false, // Ensure it is not null
+    primaryKey: true, 
+    autoIncrement: true, 
+    allowNull: false, 
   },
   name: {
     type: DataTypes.STRING,
@@ -17,20 +18,20 @@ const User = sequelize.define("User", {
     allowNull: false,
     unique: true,
     validate: {
-      isEmail: true, // Ensures the value is a valid email
+      isEmail: true, 
     },
   },
   phone: {
     type: DataTypes.STRING,
-    allowNull: true, // Phone is optional
+    allowNull: true, 
   },
   password: {
     type: DataTypes.STRING,
     allowNull: false,
   },
   profilePic: {
-    type: DataTypes.STRING, // Store the path or URL of the profile picture
-    allowNull: true, // Make it optional
+    type: DataTypes.STRING, 
+    allowNull: true,
   },
 });
 

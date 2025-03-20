@@ -1,4 +1,7 @@
-.page-header{
+.page-header {
+    background-image: url('./src/assets/news.jpg');
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    background-blend-mode: darken;
     width: 100%;
     height: 30vh;
     background-size: cover;
@@ -9,10 +12,13 @@
     padding: 14px;
 }
 
+
 .page-header h2,
 .page-header p{
-    color: white;
+    color: rgb(224, 165, 252);
+    font-size: 54px;
 }
+
 
 .about-head{
     display: flex;

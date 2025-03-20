@@ -12,7 +12,7 @@ const Like = sequelize.define("Like", {
   },
   liked: {
     type: DataTypes.BOOLEAN,
-    defaultValue: true, // true for like, false for unlike
+    defaultValue: true,
   },
 }, {
   tableName: "likes",

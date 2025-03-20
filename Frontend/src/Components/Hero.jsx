@@ -1,5 +1,11 @@
 import './../Style/Hero.css';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 function Hero(){
+    const navigate = useNavigate();
+        const location = useLocation();
+    
+        const isActive = (path) => location.pathname === path;
     return(
         <>
             <section className = "hero">
@@ -7,7 +13,7 @@ function Hero(){
                 <h2>Quickest News Platform</h2>
                 <h1>On all catagories of News</h1>
                 <p>You can explore all of them</p>
-                <button>Explore</button>
+                <button className={isActive("/News") ? "active" : ""} onClick={() => navigate("/News")}>Explore</button>
             </section>
         </>
     );
